@@ -1,7 +1,7 @@
 name: CI
 on: [push, pull_request]
 jobs:
-  quality:
+  matrix_quality:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -16,3 +16,8 @@ jobs:
       - run: uv run ruff format --check .
       - run: uv run ty check
       - run: uv run pytest --cov --cov-fail-under=80
+  quality:
+    runs-on: ubuntu-latest
+    needs: matrix_quality
+    steps:
+      - name: Success Signal
