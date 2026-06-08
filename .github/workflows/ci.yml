@@ -3,9 +3,14 @@ on: [push, pull_request]
 jobs:
   quality:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-versions: ["3.10", "3.11", "3.12"]
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v5
+        with:
+          python-version: ${{ matrix.python-versions }}
       - run: uv sync --dev
       - run: uv run ruff check .
       - run: uv run ruff format --check .
