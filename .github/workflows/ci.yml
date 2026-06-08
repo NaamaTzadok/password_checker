@@ -16,12 +16,13 @@ jobs:
       - run: uv run ruff format --check .
       - run: uv run ty check
       - run: uv run pytest --cov --cov-fail-under=80 --cov-report=xml
-  quality:
-    runs-on: ubuntu-latest
-    needs: matrix_quality
-    steps:
-      - uses: actions/checkout@v4
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+          slug: NaamaTzadok/password_checker
+  quality:
+    runs-on: ubuntu-latest
+    needs: matrix_quality
+    steps:
+      - run: true
