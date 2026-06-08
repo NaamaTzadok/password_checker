@@ -1,18 +1,29 @@
-def is_strong(password: str) -> bool:
-    if (
-        len(password) < 8 or password.islower()
-    ):  # Too short or there is no capital letter
-        return False
+def check_password_strength(password: str) -> int:
+    score = 0
+    if len(password) >= 8:  # Too short or there is no capital letter
+        score += 1
+    if any(char.islower() for char in password):
+        score += 1
     if any(char.isdigit() for char in password):  # There are numbers and letters
-        return True
-    return False
+        score += 1
+    if any(char.isupper() for char in password):
+        score += 1
+    return score
 
 
 def main():
     print("Welcome to Password-Checker!")
     password = input("Enter your password:")
-    password_strength = "strong" if is_strong(password) else "weak"
-    print(f"Your password is {password_strength}.")
+    strength_levels = [
+        "Super Weak 🥶",
+        "Very Weak ⚠️",
+        "Weak 👎🏽",
+        "Medium 👍🏽",
+        "Strong 💪🏽",
+        "Very Strong 🔥",
+    ]
+    strength_level = strength_levels[check_password_strength(password)]
+    print(f"Strenth Level: {strength_level}")
 
 
 if __name__ == "__main__":
