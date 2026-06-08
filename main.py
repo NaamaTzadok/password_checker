@@ -1,4 +1,5 @@
 import string
+import getpass
 
 
 def check_password_strength(password: str) -> int:
@@ -19,7 +20,7 @@ def check_password_strength(password: str) -> int:
 
 def main():
     print("Welcome to Password-Checker!")
-    password = input("Enter your password:")
+    password = getpass.getpass("Enter your password:")
     strength_levels = [
         "Super Weak 🥶",
         "Very Weak ⚠️",
