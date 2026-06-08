@@ -26,7 +26,7 @@ def test_no_special_letters():
 
 
 def test_main_super_weak_password(monkeypatch, capsys):
-    monkeypatch.setattr("builtins.input", lambda _: "")
+    monkeypatch.setattr("getpass.getpass", lambda _: "")
     main()
     capturd = capsys.readouterr()
 
@@ -35,7 +35,7 @@ def test_main_super_weak_password(monkeypatch, capsys):
 
 
 def test_main_very_weak_password(monkeypatch, capsys):
-    monkeypatch.setattr("builtins.input", lambda _: "1")
+    monkeypatch.setattr("getpass.getpass", lambda _: "1")
     main()
     capturd = capsys.readouterr()
 
@@ -44,7 +44,7 @@ def test_main_very_weak_password(monkeypatch, capsys):
 
 
 def test_main_weak_password(monkeypatch, capsys):
-    monkeypatch.setattr("builtins.input", lambda _: "1a")
+    monkeypatch.setattr("getpass.getpass", lambda _: "1a")
     main()
     capturd = capsys.readouterr()
 
@@ -53,7 +53,7 @@ def test_main_weak_password(monkeypatch, capsys):
 
 
 def test_main_medium_password(monkeypatch, capsys):
-    monkeypatch.setattr("builtins.input", lambda _: "1aB")
+    monkeypatch.setattr("getpass.getpass", lambda _: "1aB")
     main()
     capturd = capsys.readouterr()
 
@@ -62,7 +62,7 @@ def test_main_medium_password(monkeypatch, capsys):
 
 
 def test_main_strong_password(monkeypatch, capsys):
-    monkeypatch.setattr("builtins.input", lambda _: "1234AbCdEfG")
+    monkeypatch.setattr("getpass.getpass", lambda _: "1234AbCdEfG")
     main()
     capturd = capsys.readouterr()
 
@@ -71,7 +71,7 @@ def test_main_strong_password(monkeypatch, capsys):
 
 
 def test_main_very_strong_password(monkeypatch, capsys):
-    monkeypatch.setattr("builtins.input", lambda _: "1234@AbCdEfG")
+    monkeypatch.setattr("getpass.getpass", lambda _: "1234@AbCdEfG")
     main()
     capturd = capsys.readouterr()
 
