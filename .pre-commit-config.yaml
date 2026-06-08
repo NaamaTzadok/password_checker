@@ -1,0 +1,15 @@
+# .pre-commit-config.yaml
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.15.16
+    hooks:
+      - id: ruff          # linter
+      - id: ruff-format   # formatter
+  - repo: local
+    hooks:
+      - id: type-check
+        name: Type Check (ty)
+        entry: uv run ty check
+        language: system
+        types: [python]
+        pass_filenames: false
