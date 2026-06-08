@@ -1,13 +1,24 @@
 name: CI
 on: [push, pull_request]
 jobs:
-  quality:
+  matrix_quality:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-versions: ["3.10", "3.11", "3.12"]
     steps:
       - uses: actions/checkout@v4
       - uses: astral-sh/setup-uv@v5
+        with:
+          python-version: ${{ matrix.python-versions }}
       - run: uv sync --dev
       - run: uv run ruff check .
       - run: uv run ruff format --check .
       - run: uv run ty check
       - run: uv run pytest --cov --cov-fail-under=80
+  quality:
+    runs-on: ubuntu-latest
+    needs: matrix_quality
+    steps:
+      - name: Success Signal
+        run: echo "All matrix versions passed successfully!"
