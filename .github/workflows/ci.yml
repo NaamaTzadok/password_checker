@@ -21,3 +21,4 @@ jobs:
     needs: matrix_quality
     steps:
       - name: Success Signal
+      - run: echo "All matrix versions passed successfully!"
