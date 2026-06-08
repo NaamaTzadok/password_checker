@@ -1,6 +1,7 @@
 # Password Checker
 
 [![CI](https://github.com/NaamaTzadok/password_checker/actions/workflows/ci.yml/badge.svg)](https://github.com/NaamaTzadok/password_checker/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/github/NaamaTzadok/password_checker/graph/badge.svg?token=2TJYLPCEXS)](https://codecov.io/github/NaamaTzadok/password_checker)
 
 A small Python password strength checker that evaluates a password based on length, lowercase letters, uppercase letters, numbers, and special characters.
 
@@ -61,4 +62,4 @@ This repository includes a GitHub Actions workflow at `.github/workflows/ci.yml`
 - `uv run ruff check .`
 - `uv run ruff format --check .`
 - `uv run ty check`
-- `uv run pytest --cov --cov-fail-under=80`
+- `uv run pytest --cov --cov-fail-under=80 --cov-report=xml`
