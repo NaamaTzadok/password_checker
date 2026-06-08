@@ -18,6 +18,10 @@ def test_no_lower_case_letters():
 
 
 def test_strong_password():
+    assert check_password_strength("Strong10#password") == 5
+
+
+def test_no_special_letters():
     assert check_password_strength("StrongPassword10") == 4
 
 
@@ -63,4 +67,13 @@ def test_main_strong_password(monkeypatch, capsys):
     capturd = capsys.readouterr()
 
     assert "Welcome to Password-Checker!" in capturd.out
-    assert "Strenth Level: Strong 💪🏽" in capturd.out
+    assert "Strenth Level: Strong 💪🏽"
+
+
+def test_main_very_strong_password(monkeypatch, capsys):
+    monkeypatch.setattr("builtins.input", lambda _: "1234@AbCdEfG")
+    main()
+    capturd = capsys.readouterr()
+
+    assert "Welcome to Password-Checker!" in capturd.out
+    assert "Strenth Level: Very Strong 🔥" in capturd.out in capturd.out

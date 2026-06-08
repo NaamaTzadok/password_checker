@@ -1,3 +1,6 @@
+import string
+
+
 def check_password_strength(password: str) -> int:
     score = 0
     if len(password) >= 8:  # Too short or there is no capital letter
@@ -7,6 +10,9 @@ def check_password_strength(password: str) -> int:
     if any(char.isdigit() for char in password):  # There are numbers and letters
         score += 1
     if any(char.isupper() for char in password):
+        score += 1
+    special_chars = set(string.punctuation)
+    if any(char in special_chars for char in password):
         score += 1
     return score
 
