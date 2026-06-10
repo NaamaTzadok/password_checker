@@ -20,13 +20,7 @@ def check_password_strength(password: str) -> int:
 
 def main():
     print("Welcome to Password-Checker!")
-
-    try:
-        password = getpass.getpass("Enter your password:")
-    except (EOFError, KeyboardInterrupt):
-        print("\nOperation cancelled by user. Exiting...")
-        exit(1)
-
+    password = getpass.getpass("Enter your password:")
     strength_levels = [
         "Super Weak 🥶",
         "Very Weak ⚠️",
@@ -36,7 +30,7 @@ def main():
         "Very Strong 🔥",
     ]
     strength_level = strength_levels[check_password_strength(password)]
-    print(f"Strength Level: {strength_level}")
+    print(f"Strenth Level: {strength_level}")
 
 
 if __name__ == "__main__":
