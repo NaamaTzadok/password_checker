@@ -67,7 +67,7 @@ def test_main_strong_password(monkeypatch, capsys):
     capturd = capsys.readouterr()
 
     assert "Welcome to Password-Checker!" in capturd.out
-    assert "Strenth Level: Strong 💪🏽"
+    assert "Strenth Level: Strong 💪🏽" in capturd.out
 
 
 def test_main_very_strong_password(monkeypatch, capsys):
@@ -76,4 +76,4 @@ def test_main_very_strong_password(monkeypatch, capsys):
     capturd = capsys.readouterr()
 
     assert "Welcome to Password-Checker!" in capturd.out
-    assert "Strenth Level: Very Strong 🔥" in capturd.out in capturd.out
+    assert "Strenth Level: Very Strong 🔥" in capturd.out
