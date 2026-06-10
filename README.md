@@ -26,7 +26,7 @@ The scoring rules are:
 
 ## Requirements
 
-- Python 3.14 or later
+- Python 3.10 or later
 
 ## Installation
 
