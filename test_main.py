@@ -28,52 +28,52 @@ def test_no_special_letters():
 def test_main_super_weak_password(monkeypatch, capsys):
     monkeypatch.setattr("getpass.getpass", lambda _: "")
     main()
-    capturd = capsys.readouterr()
+    captured = capsys.readouterr()
 
-    assert "Welcome to Password-Checker!" in capturd.out
-    assert "Strenth Level: Super Weak 🥶" in capturd.out
+    assert "Welcome to Password-Checker!" in captured.out
+    assert "Strength Level: Super Weak 🥶" in captured.out
 
 
 def test_main_very_weak_password(monkeypatch, capsys):
     monkeypatch.setattr("getpass.getpass", lambda _: "1")
     main()
-    capturd = capsys.readouterr()
+    captured = capsys.readouterr()
 
-    assert "Welcome to Password-Checker!" in capturd.out
-    assert "Strenth Level: Very Weak ⚠️" in capturd.out
+    assert "Welcome to Password-Checker!" in captured.out
+    assert "Strength Level: Very Weak ⚠️" in captured.out
 
 
 def test_main_weak_password(monkeypatch, capsys):
     monkeypatch.setattr("getpass.getpass", lambda _: "1a")
     main()
-    capturd = capsys.readouterr()
+    captured = capsys.readouterr()
 
-    assert "Welcome to Password-Checker!" in capturd.out
-    assert "Strenth Level: Weak 👎🏽" in capturd.out
+    assert "Welcome to Password-Checker!" in captured.out
+    assert "Strength Level: Weak 👎🏽" in captured.out
 
 
 def test_main_medium_password(monkeypatch, capsys):
     monkeypatch.setattr("getpass.getpass", lambda _: "1aB")
     main()
-    capturd = capsys.readouterr()
+    captured = capsys.readouterr()
 
-    assert "Welcome to Password-Checker!" in capturd.out
-    assert "Strenth Level: Medium 👍🏽" in capturd.out
+    assert "Welcome to Password-Checker!" in captured.out
+    assert "Strength Level: Medium 👍🏽" in captured.out
 
 
 def test_main_strong_password(monkeypatch, capsys):
     monkeypatch.setattr("getpass.getpass", lambda _: "1234AbCdEfG")
     main()
-    capturd = capsys.readouterr()
+    captured = capsys.readouterr()
 
-    assert "Welcome to Password-Checker!" in capturd.out
-    assert "Strenth Level: Strong 💪🏽" in capturd.out
+    assert "Welcome to Password-Checker!" in captured.out
+    assert "Strength Level: Strong 💪🏽" in captured.out
 
 
 def test_main_very_strong_password(monkeypatch, capsys):
     monkeypatch.setattr("getpass.getpass", lambda _: "1234@AbCdEfG")
     main()
-    capturd = capsys.readouterr()
+    captured = capsys.readouterr()
 
-    assert "Welcome to Password-Checker!" in capturd.out
-    assert "Strenth Level: Very Strong 🔥" in capturd.out
+    assert "Welcome to Password-Checker!" in captured.out
+    assert "Strength Level: Very Strong 🔥" in captured.out
