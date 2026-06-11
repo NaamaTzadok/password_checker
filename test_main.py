@@ -1,4 +1,5 @@
 from main import check_password_strength, main
+import pytest
 
 
 def test_short_password():
@@ -77,3 +78,35 @@ def test_main_very_strong_password(monkeypatch, capsys):
 
     assert "Welcome to Password-Checker!" in captured.out
     assert "Strength Level: Very Strong 🔥" in captured.out
+
+
+def test_main_handles_eof(monkeypatch, capsys):
+
+    def mock_getpass_raise_eof(_):
+        raise EOFError
+
+    monkeypatch.setattr("getpass.getpass", mock_getpass_raise_eof)
+
+    with pytest.raises(SystemExit) as exc_info:
+        main()
+
+    assert exc_info.value.code == 0
+    captured = capsys.readouterr()
+    assert "Welcome to Password-Checker!" in captured.out
+    assert "\nOperation cancelled by user. Exiting..." in captured.out
+
+
+def test_main_handles_keyboard_interrupt(monkeypatch, capsys):
+
+    def mock_getpass_raise_interrupt(_):
+        raise KeyboardInterrupt
+
+    monkeypatch.setattr("getpass.getpass", mock_getpass_raise_interrupt)
+
+    with pytest.raises(SystemExit) as exc_info:
+        main()
+
+    assert exc_info.value.code == 0
+    captured = capsys.readouterr()
+    assert "Welcome to Password-Checker!" in captured.out
+    assert "\nOperation cancelled by user. Exiting..." in captured.out
