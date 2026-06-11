@@ -36,7 +36,7 @@ def main():
         "Very Strong 🔥",
     ]
     strength_level = strength_levels[check_password_strength(password)]
-    print(f"Strength Level: {strength_level}")
+    print(f"Strenth Level: {strength_level}")
 
 
 if __name__ == "__main__":
