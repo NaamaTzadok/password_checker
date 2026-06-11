@@ -25,7 +25,7 @@ def main():
         password = getpass.getpass("Enter your password:")
     except (EOFError, KeyboardInterrupt):
         print("\nOperation cancelled by user. Exiting...")
-        exit(1)
+        exit(0)
 
     strength_levels = [
         "Super Weak 🥶",
